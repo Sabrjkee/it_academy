@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block title %}{{ mo.name }}{% endblock %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5">{{ mo.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+
+
+{#            <div id="input-search"  >#}
+{#                <form method="GET" action="">#}
+{#                    <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">#}
+{#                    <input class="btn-my btn btn-block btn-lg btn-primary" type="submit" value="Найти">#}
+{#                </form>#}
+{#            </div>#}
+            <div class="user-container">
+
+            </div>
+
+            <table>
+                <thead>
+                <th>Провайдер</th>
+                <th>ЮР Адресс</th>
+                <th>Номер телефона</th>
+                <th>Личный кабинет</th>
+                <th>Номер контракта</th>
+                <th>Дата Контракта</th>
+                <th>Наличие оборудования от провайдера</th>
+                <th>Модель</th>
+                <th>Тип проброса</th>
+                </thead>
+                <tbody>
+{#                {% for prov in mo.providermo.provider_set.all %}#}
+                    <tr>
+                        <td>{{ mo.providermo.provider.name }}</td>
+                        <td>{{ mo.providermo.provider.ur_adress}}</td>
+                        <td>{{ mo.providermo.provider.provider_phone_number }}</td>
+                        <td><a href="{{ mo.providermo.provider.urls_to_web }}">Кабинет</a></td>
+                        <td>{{ mo.providermo.number_of_contract }}</td>
+                        <td>{{ mo.providermo.date_of_contract }}</td>
+                        <td>{{ mo.providermo.provider_equipment }}</td>
+                        <td>{{ mo.providermo.provider_eq_type }}</td>
+                        <td>{{ mo.providermo.provider_eq_settings }}</td>
+                    </tr>
+{#                {% endfor %}#}
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+    {% endif %}
+{% endblock %}

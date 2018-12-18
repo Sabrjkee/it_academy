@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block title %}{% endblock %}
+<body>
+{% block top-nav %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="btn btn-primary btn-my" href="{% url 'main_site:home' %}">Home</a>
+            <a class="btn btn-primary btn-my" href="#">FAQ</a>
+            {% if request.user.is_authenticated %}
+                <a class="btn btn-primary btn-my" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="btn btn-primary btn-my" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}
+{% block header %}
+    <header class="masthead text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">123456789!</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+
+
+                    <div id="input-search"  >
+                        <form method="GET" action="">
+                            <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">
+                            <input class="btn-my btn btn-block btn-lg btn-primary" type="submit" value="Найти">
+                        </form>
+                    </div>
+                    <div class="user-container">
+
+                    </div>
+
+                    <table>
+                        <thead>
+                        <th>Наименование МО</th>
+                        <th>Номер Телефона</th>
+                        <th>Код Мо</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for mo in mo %}
+                            <tr>
+                                <td>{{ mo.name }}</td>
+                                <td>+375{{ mo.phone_number }}</td>
+                                <td>{{ mo.kod_mo }}</td>
+                                <td>
+                                    <ul>
+                                        <a class="btn btn-primary btn-my" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a>
+                                        {% if request.user.is_authenticated %}
+                                            <a class="btn btn-primary btn-my" href="{% url 'it:network' pk=mo.pk %}">Информация о сети</a>
+                                            <a class="btn btn-primary btn-my" href="{% url 'it:equipment' pk=mo.pk %}">Информация об оборудование</a>
+                                            <a class="btn btn-primary btn-my" href="{% url 'it:provider' pk=mo.pk %}">Информация о Провайдере</a>
+                                        {% else %}
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+</body>

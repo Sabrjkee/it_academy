@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}{{ mo.name }}{% endblock %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+
+             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+
+
+{#                    <div id="input-search"  >#}
+{#                        <form method="GET" action="">#}
+{#                            <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">#}
+{#                            <input class="btn-my btn btn-block btn-lg btn-primary" type="submit" value="Найти">#}
+{#                        </form>#}
+{#                    </div>#}
+                    <div class="user-container">
+
+                    </div>
+
+                    <table>
+                        <thead>
+                        <th>Наименование МО</th>
+                        <th>Номер Телефона</th>
+                        <th>Код Мо</th>
+                        <th>IP адрес</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for eq in mo.equipmentmo_set.all %}
+                            <tr>
+                                <td>{{ eq.equipment.name }}</td>
+                                <td>+375{{ eq.login_for_web }}</td>
+                                <td>{{ eq.pass_for_web }}</td>
+                                <td>{{ eq.ip_adress }}</td>
+                                <td>
+                                    <ul>
+                                        <a class="btn btn-primary btn-my" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% block title %}{{ mo.name }}{% endblock %}
+{% block content %}
+     <section class="features-icons bg-light text-center">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-9 mx-auto">
+                  <h1 class="mb-5">{{ mo.name }}</h1>
+              </div>
+          </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-phone m-auto text-primary"></i>
+              </div>
+              <h3>{{ mo.phone_number }}</h3>
+{#              <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>#}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-list m-auto text-primary"></i>
+              </div>
+              <h3>{{ mo.email_mo }}</h3>
+{#              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>#}
+            </div>
+          </div>
+            <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-home m-auto text-primary"></i>
+              </div>
+              <h3>{{ mo.adress_mo }}</h3>
+{#              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>#}
+            </div>
+          </div>
+            {% if request.user.is_authenticated %}
+                <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-home m-auto text-primary"></i>
+                    </div>
+                    <h3>{{ mo.molocal.getway }}</h3>
+                    <p class="lead mb-0">GetWay</p>
+                </div>
+                </div>
+                <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-home m-auto text-primary"></i>
+                    </div>
+                    <h3>{{ mo.molocal.static_ip }}</h3>
+                    <p class="lead mb-0">Statick IP</p>
+                </div>
+                </div>
+
+                <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-home m-auto text-primary"></i>
+                    </div>
+                    <h3>{{ mo.providermo.provider.name }}</h3>
+                    <p class="lead mb-0">Provider</p>
+                </div>
+                </div>
+            {% endif %}
+        </div>
+      </div>
+    </section>
+{#    <h1>{{ mo.name }}</h1>#}
+{#    <h3>{{ mo.phone_number }}</h3>#}
+{#    <h3>{{ mo.email_mo }}</h3>#}
+{#    <h3>{{ mo.adress_mo }}</h3>#}
+{#    <iframe src="https://www.google.com/maps/embed?pb={{ mo.coordinates_google }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+    <div class="container">
+        <div class="row">
+
+                {% for photo in mo.photomo_set.all %}
+
+                        <img src="{{ photo.photo.url }}" alt="КАРТИНКИ НЕТУ">
+
+
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}

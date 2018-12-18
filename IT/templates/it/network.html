@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block title %}{{ mo.name }}{% endblock %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5">{{ mo.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+
+
+
+{#            <div id="input-search"  >#}
+{#                <form method="GET" action="">#}
+{#                    <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">#}
+{#                    <input class="btn-my btn btn-block btn-lg btn-primary" type="submit" value="Найти">#}
+{#                </form>#}
+{#            </div>#}
+            <div class="user-container">
+
+            </div>
+
+            <table>
+                <thead>
+                <th>Наименование МО</th>
+                <th>Номер Телефона</th>
+                <th>Код Мо</th>
+                <th>IP адрес</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ mo.molocal.first_ip_adress }}</td>
+                        <td>{{ mo.molocal.getway }}</td>
+                        <td>{{ mo.molocal.static_ip }}</td>
+                        <td>{{ mo.molocal.mask }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+    {% endif %}
+{% endblock %}

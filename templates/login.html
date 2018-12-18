@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        {% if form.errors %}#}
+{#            {% for error in form.errors %}#}
+{#                {{ error }}#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
+{#        <div class="col-12 col-md-9 mb-2 mb-md-0">#}
+            {#        <label for="id_username">Username</label>#}
+{#            <input type="text" class="form-control form-control-lg" name="username" id="id_username" placeholder="Enter username">#}
+{#        </div>#}
+{#        <div class="col-12 col-md-9 mb-2 mb-md-0">#}
+            {#        <label for="id_password">Password</label>#}
+{#            <input type="password" class="form-control form-control-lg" name="password" id="id_password" placeholder="Password">#}
+{#        </div>#}
+{#        <button type="submit" class="btn-my btn btn-primary">Submit</button>#}
+{#    </form>#}
+
+
+    <header class="masthead text-white text-center" xmlns="http://www.w3.org/1999/html">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">LOGIN FORM</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    {% for error in form.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                    {#        <label for="id_username">Username</label>#}
+                                    <input type="text" class="form-control form-control-lg" name="username" id="id_username" placeholder="Enter username">
+                                </div>
+                                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                    {#        <label for="id_password">Password</label>#}
+                                    <input type="password" class="form-control form-control-lg" name="password" id="id_password" placeholder="Password">
+                                </div></br>
+                                <button type="submit" class="btn-my btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+    </header>
+{% endblock %}
