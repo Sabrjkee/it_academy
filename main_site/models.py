@@ -20,6 +20,13 @@ class MO (models.Model):
     )
     coordinates_google = models.TextField()
 
+    class Meta:
+        verbose_name_plural = 'MO'
+        ordering = ['name']
+
+    def __unicode__(self):
+        return self.name
+
 
 class PhotoMO (models.Model):
     mo = models.ForeignKey(
