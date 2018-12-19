@@ -1,4 +1,5 @@
 from django.views.generic import DetailView, TemplateView
+from django.urls import reverse_lazy
 
 from main_site.models import MO
 

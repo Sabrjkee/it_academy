@@ -19,8 +19,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 
+
 from main_site import urls as ms_urls
 from IT import urls as it_urls
+
 
 
 urlpatterns = [

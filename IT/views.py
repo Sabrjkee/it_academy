@@ -1,20 +1,22 @@
 from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from IT import utils
 from main_site.models import MO
 
 
-class EqipmentView(DetailView):
+
+class EqipmentView(LoginRequiredMixin, DetailView):
     template_name = 'it/equipment.html'
     model = MO
 
 
-class NetworkView(DetailView):
+class NetworkView(LoginRequiredMixin, DetailView):
     template_name = 'it/network.html'
     model = MO
 
 
-class ProviderView(DetailView):
+class ProviderView(LoginRequiredMixin, DetailView):
     template_name = 'it/provider.html'
     model = MO
 
