@@ -30,21 +30,36 @@ class MOListView(DetailView):
 
 class HomePage(TemplateView):
     template_name = 'main_site/index.html'
+    model = MO
 
+    # def get_context_data(self):
+    #     try:
+    #         name = self.kwargs['q']
+    #     except:
+    #         name = ''
+    #     if (name != ''):
+    #         object_list = self.model.objects.filter(name__icontains=name)
+    #     else:
+    #         object_list = self.model.objects.all()
+    #     return object_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         try:
             name = self.kwargs['q']
         except:
             name = ''
+
         if (name != ''):
             mo = MO.objects.filter(name__icontains=name)
         else:
             mo = MO.objects.all()
+
         context.update({
             'mo': mo,
         })
+
         return context
 
 
