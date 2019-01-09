@@ -28,12 +28,12 @@ from IT import urls as it_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include((ms_urls, 'main_site'))),
-    path('', include((it_urls, 'it'))),
+    path('', include((it_urls, 'IT'))),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
 ]
 
 if settings.DEBUG:
     urlpatterns +=\
-    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +\
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +\
+        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

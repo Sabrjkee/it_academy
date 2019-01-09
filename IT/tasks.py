@@ -4,7 +4,7 @@ import os
 
 
 @celery_app.task
-def ping(hostname:str):
+def ping(hostname: str):
     response = os.system("ping -c 2 " + hostname)
     if response == 0:
         return True
