@@ -97,31 +97,35 @@
         </div>
         <div class="container">
 
-            <div class="row">
-                <div class="col btn-my">Наименование МО</div>
-                <div class="col btn-my">Номер Телефона</div>
-                <div class="col btn-my">Код Мо</div>
-                <div class="col btn-my">Links</div>
-                <div class="w-100"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col btn-my">Наименование МО</div>
+                    <div class="col btn-my">Номер Телефона</div>
+                    <div class="col btn-my">Код Мо</div>
+                    <div class="col btn-my">Links</div>
+                    <div class="w-100"></div>
+                </div>
             </div>
 
-            <div class="row" style="padding-top: 20px">
+            <div class="container" style="padding-top: 20px">
                 {% for mo in mo %}
-                    <div class="col btn-my">{{ mo.name }}</div>
-                    <div class="col btn-my">+375{{ mo.phone_number }}</div>
-                    <div class="col btn-my">{{ mo.kod_mo }}</div>
-                    <div class="col btn-my">
-                        <ul>
-                            <a href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a></br>
+                    <div class="row align-items-center btn-my" style="color: black">
+                        <div class="col">{{ mo.name }}</div>
+                        <div class="col">+375{{ mo.phone_number }}</div>
+                        <div class="col">{{ mo.kod_mo }}</div>
+                        <div class="col">
+                            {#                        <ul>#}
+                            <a style="color: #000000;" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a></br>
                             {% if request.user.is_authenticated %}
-                                <a href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a></br>
-                                <a href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a></br>
-                                <a href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>
-                                <div class="w-100"></div>
+                                <a style="color: #000000;" href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a></br>
+                                <a style="color: #000000;" href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a></br>
+                                <a style="color: #000000;" href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>
                             {% else %}
                             {% endif %}
-                        </ul>
+                            {#                        </ul>#}
+                        </div>
                     </div>
+                    <div class="w-100"></div>
                 {% endfor %}
             </div>
 
