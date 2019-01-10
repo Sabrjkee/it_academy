@@ -29,49 +29,102 @@
 
                     <div id="input-search"  >
                         <form method="GET" action="">
-{#                            <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">#}
-                            {{ form }}
+                            <input class="form-control form-control-lg" type="text" name="q" placeholder="Поиск">
                             <input class="btn-my btn btn-block btn-lg btn-primary" type="submit" value="Найти">
                         </form>
                     </div>
-                    <div class="user-container">
+                    {#                    <div class="user-container">#}
+                    {##}
+                    {#                    </div>#}
 
-                    </div>
-
-                    <table>
-                        <thead>
-                        <th>Наименование МО</th>
-                        <th>Номер Телефона</th>
-                        <th>Код Мо</th>
-                        <th></th>
-                        </thead>
-                        <tbody>
+                    {#                    <table>#}
+                    {#                        <thead>#}
+                    {#                        <th>Наименование МО</th>#}
+                    {#                        <th>Номер Телефона</th>#}
+                    {#                        <th>Код Мо</th>#}
+                    {#                        <th></th>#}
+                    {#                        </thead>#}
+                    {#                        <tbody>#}
+                    {#                        {% for mo in mo %}#}
+                    {#                            <tr>#}
+                    {#                                <td>{{ mo.name }}</td>#}
+                    {#                                <td>+375{{ mo.phone_number }}</td>#}
+                    {#                                <td>{{ mo.kod_mo }}</td>#}
+                    {#                                <td>#}
+                    {#                                    <ul>#}
+                    {#                                        <a class="btn btn-primary btn-my" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a>#}
+                    {#                                        {% if request.user.is_authenticated %}#}
+                    {#                                            <a class="btn btn-primary btn-my" href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a>#}
+                    {#                                            <a class="btn btn-primary btn-my" href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a>#}
+                    {#                                            <a class="btn btn-primary btn-my" href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>#}
+                    {#                                        {% else %}#}
+                    {#                                        {% endif %}#}
+                    {#                                    </ul>#}
+                    {#                                </td>#}
+                    {#                            </tr>#}
+                    {#                        {% endfor %}#}
+                    {#                        </tbody>#}
+                    {#                    </table>#}
+                    {% comment %}                    <div class="row">
+                        <div class="col">Наименование МО</div>
+                        <div class="col">Номер Телефона</div>
+                        <div class="col">Код Мо</div>
+                        <div class="col"></div>
+                        <div class="w-100"></div>
                         {% for mo in mo %}
-                            <tr>
-                                <td>{{ mo.name }}</td>
-                                <td>+375{{ mo.phone_number }}</td>
-                                <td>{{ mo.kod_mo }}</td>
-                                <td>
-                                    <ul>
-                                        <a class="btn btn-primary btn-my" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a>
-                                        {% if request.user.is_authenticated %}
-                                            <a class="btn btn-primary btn-my" href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a>
-                                            <a class="btn btn-primary btn-my" href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a>
-                                            <a class="btn btn-primary btn-my" href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>
-                                        {% else %}
-                                        {% endif %}
-                                    </ul>
-                                </td>
-                            </tr>
+                            <div class="col">{{ mo.name }}</div>
+                            <div class="col">+375{{ mo.phone_number }}</div>
+                            <div class="col">{{ mo.kod_mo }}</div>
+                            <div class="col">
+                                <ul>
+                                    <a class="btn btn-primary btn-my" href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a>
+                                    {% if request.user.is_authenticated %}
+                                        <a class="btn btn-primary btn-my" href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a>
+                                        <a class="btn btn-primary btn-my" href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a>
+                                        <a class="btn btn-primary btn-my" href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>
+                                    {% else %}
+                                    {% endif %}
+                                </ul>
+                            </div>
                         {% endfor %}
-                        </tbody>
-                    </table>
+                    </div>{% endcomment %}
 
 
 
 
                 </div>
             </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col btn-my">Наименование МО</div>
+                <div class="col btn-my">Номер Телефона</div>
+                <div class="col btn-my">Код Мо</div>
+                <div class="col btn-my">Links</div>
+                <div class="w-100"></div>
+            </div>
+
+            <div class="row" style="padding-top: 20px">
+                {% for mo in mo %}
+                    <div class="col btn-my">{{ mo.name }}</div>
+                    <div class="col btn-my">+375{{ mo.phone_number }}</div>
+                    <div class="col btn-my">{{ mo.kod_mo }}</div>
+                    <div class="col btn-my">
+                        <ul>
+                            <a href="{% url 'main_site:mo_view' pk=mo.pk %}">Информация о МО</a></br>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'IT:network' pk=mo.pk %}">Информация о сети</a></br>
+                                <a href="{% url 'IT:equipment' pk=mo.pk %}">Информация об оборудование</a></br>
+                                <a href="{% url 'IT:provider' pk=mo.pk %}">Информация о Провайдере</a>
+                                <div class="w-100"></div>
+                            {% else %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+
         </div>
     </header>
 {% endblock %}
